@@ -4,8 +4,8 @@ import 'freezed/only_freezed/user_model.dart';
 
 void main() {
   //--------------Only Freezed ----------
-  const user1 = User(name: "Utkarsh");
-  const user2 = User(name: "Utkarsh");
+  const user1 = User(name: "Utkarsh", jobs: []);
+  const user2 = User(name: "Utkarsh", jobs: []);
   print(user2 == user1); //OP: true
   print(user1);
   print(user2);
