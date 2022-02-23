@@ -7,6 +7,7 @@ class Cart with _$Cart {
   const Cart._();
 
   factory Cart(
+      // ignore: invalid_annotation_target
       {@JsonKey(name: "order_no") required String orderNo,
       @JsonKey(fromJson: _modifyName) String? name}) = _Cart;
 
