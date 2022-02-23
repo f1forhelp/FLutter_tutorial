@@ -14,3 +14,17 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+
+Extensions: For automatically generating models from json - Json to Dart Model - v3.5.7 - hirantha
+
+
+
+//----------------Command For COde generation --------------
+1. flutter pub run build_runner watch --delete-conflicting-outputs   ---(For Constantly watching the changes and rebuild when there is a change)
+
+2. flutter pub run build_runner build --delete-conflicting-outputs  ---(For single time execution)
+
+3. flutter pub run build_runner clean   ---(FOr deleting genarated files)
+
