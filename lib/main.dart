@@ -17,5 +17,10 @@ void main() {
   cartModel = cartModel.copyWith(name: "Utkarsh");
   print(cartModel.toJson());
   print(cartModel.getConcatedResult());
-  var cartModelFromJson = Cart.fromJson({});
+
+  var cartModelFromJson =
+      Cart.fromJson({"name": "utkarsh", "order_id": "this is underScore Id"});
+  print(cartModelFromJson.name);
+  print(cartModelFromJson.toJson());
+  print(cartModelFromJson.toString());
 }

@@ -7,11 +7,11 @@ part of 'cart_model.dart';
 // **************************************************************************
 
 _$_Cart _$$_CartFromJson(Map<String, dynamic> json) => _$_Cart(
-      orderNo: json['orderNo'] as String,
-      name: json['name'] as String?,
+      orderNo: json['order_no'] as String,
+      name: _modifyName(json['name']),
     );
 
 Map<String, dynamic> _$$_CartToJson(_$_Cart instance) => <String, dynamic>{
-      'orderNo': instance.orderNo,
+      'order_no': instance.orderNo,
       'name': instance.name,
     };
