@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
+  Paint.enableDithering = true;
   runApp(const MyApp());
 }
 
@@ -52,10 +53,11 @@ class MyHomePage extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.grey.shade300,
-                gradient: RadialGradient(
-                  colors: [Color(0xFF9E9E9E), Colors.white],
-                  center: Alignment.topLeft,
-                  radius: 0.8,
+                gradient: LinearGradient(
+                  colors: [Color(0xFF9E9E9E), Colors.white, Color(0xFF9E9E9E)],
+                  begin: Alignment.topLeft,
+                  // stops: [0.5, 0.8],
+                  end: Alignment.bottomRight,
                 ),
                 boxShadow: [
                   BoxShadow(
@@ -68,7 +70,7 @@ class MyHomePage extends StatelessWidget {
                     color: Colors.white,
                     offset: Offset(-4, -4),
                     blurRadius: 15,
-                    spreadRadius: 4,
+                    spreadRadius: 15,
                   ),
                 ],
               ),
