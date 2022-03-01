@@ -39,11 +39,12 @@ class MyHomePage extends StatelessWidget {
             // Text(
             //   "This is Neumorphic",
             // ),
-            CustomNeuMorphicButton(),
+            // CustomNeuMorphicButton(),
             SizedBox(
               height: 100,
             ),
-            Container(
+            AnimatedContainer(
+              duration: Duration(milliseconds: 50),
               width: 200,
               height: 200,
               child: Icon(
@@ -53,16 +54,19 @@ class MyHomePage extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.grey.shade300,
-                gradient: LinearGradient(
-                  colors: [Color(0xFF9E9E9E), Colors.white, Color(0xFF9E9E9E)],
-                  begin: Alignment.topLeft,
-                  // stops: [0.5, 0.8],
-                  end: Alignment.bottomRight,
-                ),
+                // border: Border.lerp(a, b, t),
+                // gradient: RadialGradient(
+                //   colors: [
+                //     Color.fromARGB(255, 192, 187, 187),
+                //     Color(0xFF9E9E9E)
+                //   ],
+                //   center: Alignment.center,
+                //   radius: 0.8,
+                // ),
                 boxShadow: [
                   BoxShadow(
                     color: Color(0xFF9E9E9E),
-                    offset: const Offset(4, 4),
+                    offset: const Offset(0, 0),
                     blurRadius: 15,
                     spreadRadius: 1,
                   ),
@@ -70,8 +74,49 @@ class MyHomePage extends StatelessWidget {
                     color: Colors.white,
                     offset: Offset(-4, -4),
                     blurRadius: 15,
-                    spreadRadius: 15,
+                    spreadRadius: 4,
                   ),
+                ],
+              ),
+            ),
+
+            SizedBox(
+              height: 50,
+            ),
+            AnimatedContainer(
+              duration: Duration(milliseconds: 50),
+              width: 200,
+              height: 200,
+              child: Icon(
+                Icons.android,
+                size: 80,
+              ),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.grey.shade300,
+                // border: Border.lerp(a, b, t),
+                // gradient: RadialGradient(
+                //   colors: [
+                //     Color.fromARGB(255, 192, 187, 187),
+                //     Color(0xFF9E9E9E)
+                //   ],
+                //   center: Alignment.center,
+                //   radius: 0.8,
+                // ),
+                boxShadow: [
+                  const BoxShadow(
+                    color: Colors.white,
+                    offset: Offset(-4, -4),
+                    blurRadius: 15,
+                    spreadRadius: 4,
+                    blurStyle: BlurStyle.inner,
+                  ),
+                  BoxShadow(
+                      color: Color(0xFF9E9E9E),
+                      offset: const Offset(-18, -18),
+                      blurRadius: 15,
+                      spreadRadius: 1,
+                      blurStyle: BlurStyle.inner),
                 ],
               ),
             ),
@@ -92,7 +137,7 @@ class CustomNeuMorphicButton extends StatefulWidget {
 }
 
 class _CustomNeuMorphicButtonState extends State<CustomNeuMorphicButton> {
-  bool _isTapped = false;
+  bool _isTapped = true;
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +174,7 @@ class _CustomNeuMorphicButtonState extends State<CustomNeuMorphicButton> {
           color: Colors.grey.shade300,
           gradient: _isTapped
               ? RadialGradient(
-                  colors: [Color(0xFF9E9E9E), Colors.white],
+                  colors: [Color.fromARGB(255, 187, 187, 187), Colors.white],
                   center: Alignment.topLeft,
                   radius: 0.8,
                 )
