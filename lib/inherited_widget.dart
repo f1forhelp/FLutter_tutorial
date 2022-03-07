@@ -52,7 +52,7 @@ class SateteInheritedWidget extends InheritedWidget {
       {Key? key, required this.counter, required Widget child})
       : super(key: key, child: child);
 
-  static int of(BuildContext context) =>
+  static SateteInheritedWidget? of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<SateteInheritedWidget>();
 
   @override
