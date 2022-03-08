@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/main.dart';
 
 class InheritedWidgetExample extends StatefulWidget {
   const InheritedWidgetExample({Key? key}) : super(key: key);
@@ -8,20 +9,46 @@ class InheritedWidgetExample extends StatefulWidget {
 }
 
 class _InheritedWidgetExampleState extends State<InheritedWidgetExample> {
+  int counter = 0;
+
   @override
   Widget build(BuildContext context) {
     return SateteInheritedWidget(
-      counter: 0,
+      counter: counter,
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Inherited Example"),
         ),
         body: Column(
-          children: const [
-            Text("data"),
-            _TempContainr(),
+          children: [
+            CustomTextButton(
+              onTap: () {
+                counter++;
+                setState(() {});
+              },
+              title: "Increase Counter",
+            ),
+            const _TempContainr(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ScreenSecond extends StatefulWidget {
+  const ScreenSecond({Key? key}) : super(key: key);
+
+  @override
+  State<ScreenSecond> createState() => _ScreenSecondState();
+}
+
+class _ScreenSecondState extends State<ScreenSecond> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [],
       ),
     );
   }
