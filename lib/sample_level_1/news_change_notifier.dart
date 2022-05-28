@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorial/article.dart';
-import 'package:flutter_tutorial/news_service.dart';
+import 'article.dart';
+import 'news_service.dart';
 
 class NewsChangeNotifier extends ChangeNotifier {
   final NewsService _newsService;

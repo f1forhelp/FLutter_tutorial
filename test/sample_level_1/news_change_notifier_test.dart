@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_tutorial/article.dart';
-import 'package:flutter_tutorial/news_change_notifier.dart';
-import 'package:flutter_tutorial/news_service.dart';
+import 'package:flutter_tutorial/sample_level_1/article.dart';
+import 'package:flutter_tutorial/sample_level_1/news_change_notifier.dart';
+import 'package:flutter_tutorial/sample_level_1/news_service.dart';
 import 'package:mocktail/mocktail.dart';
 
 //Avoid This Kind of Mocks...
