@@ -49,8 +49,9 @@ class Screen2 extends StatelessWidget {
                   // Get.reset(clearRouteBindings: false);
                   // Get.find<Screen1Controller>().refresh();
                   // Get.snackbar("As", "as");
-                  // await Get.delete<Screen1Controller>();
-
+                  // await Get.delete<Screen1Controller>(force: true);
+                  await Get.deleteAll(force: true);
+                  Get.delete();
                   Get.showSnackbar(
                     GetSnackBar(
                       message: "Yhis is messahe",

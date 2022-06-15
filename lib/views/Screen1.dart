@@ -10,20 +10,24 @@ import 'package:get/instance_manager.dart';
 import '../controllers/screen1_controller.dart';
 
 class Screen1 extends StatelessWidget {
-  Screen1({Key? key}) : super(key: key);
+  const Screen1({Key? key}) : super(key: key);
 
-  final controller = Get.put(Screen1Controller());
+  // final controller = Get.put(Screen1Controller(), permanent: true);
   @override
   Widget build(BuildContext context) {
     return GetBuilder<Screen1Controller>(
-      init: controller,
-      initState: (state) {},
+      init: Screen1Controller(),
+      initState: (state) {
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+          print("----Post Controller Is called");
+        });
+        state.controller?.counter = 20;
+      },
       builder: (controller) {
         return Material(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Screen1'),
               Text('Counter: ${controller.counter}'),
               CustomTextButton(
                 label: "+",
@@ -32,15 +36,17 @@ class Screen1 extends StatelessWidget {
                 },
               ),
               CustomTextButton(
-                  label: "-",
-                  onPressed: () {
-                    controller.decrement();
-                  }),
+                label: "-",
+                onPressed: () {
+                  controller.decrement();
+                },
+              ),
               CustomTextButton(
-                  label: "Go to Screen2",
-                  onPressed: () {
-                    Get.off(Screen2());
-                  }),
+                label: "Go to Screen2",
+                onPressed: () {
+                  Get.off(Screen2());
+                },
+              ),
             ],
           ),
         );
