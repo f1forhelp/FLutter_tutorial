@@ -16,7 +16,7 @@ class Screen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<Screen1Controller>(
-      init: Screen1Controller(),
+      init: controller,
       initState: (state) {},
       builder: (controller) {
         return Material(

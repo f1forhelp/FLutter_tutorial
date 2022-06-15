@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/app_init.dart';
 import 'package:flutter_tutorial/views/Screen1.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
+  AppInit.initGetIt();
   runApp(const MyApp());
 }
 

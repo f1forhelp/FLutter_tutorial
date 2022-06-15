@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_tutorial/app_init.dart';
 import 'package:flutter_tutorial/controllers/screen1_controller.dart';
 import 'package:flutter_tutorial/views/Screen1.dart';
 import 'package:flutter_tutorial/views/widge/custom_text_button.dart';
@@ -42,10 +43,19 @@ class Screen2 extends StatelessWidget {
                   }),
               CustomTextButton(
                 label: "Reset Screen 1 state",
-                onPressed: () {
-                  Get.deleteAll();
+                onPressed: () async {
+                  // AppInit.resetGetIt();
+                  // Get.deleteAll();
                   // Get.reset(clearRouteBindings: false);
-                  Get.find<Screen1Controller>().dispose();
+                  // Get.find<Screen1Controller>().refresh();
+                  // Get.snackbar("As", "as");
+                  // await Get.delete<Screen1Controller>();
+
+                  Get.showSnackbar(
+                    GetSnackBar(
+                      message: "Yhis is messahe",
+                    ),
+                  );
                 },
               ),
             ],
