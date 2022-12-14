@@ -1,16 +1,10 @@
-# flutter_tutorial
+# Flutter Integration Test
 
 A new Flutter project.
 
-## Getting Started
+## To run test
 
-This project is a starting point for a Flutter application.
+- Download chrome driver from (https://chromedriver.chromium.org/downloads)
+- Install Chrome driver and run it on port - 4444 By using (./chromedriver --port=4444). (./chromedriver --port=4444) Execute this command from the directory where the driver is saved.
+- (flutter drive --driver=flutter_driver/integration_test.dart --target=integration_test/app_test.dart -d web-server) Use this command to run test.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
