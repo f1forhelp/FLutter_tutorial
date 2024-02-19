@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorial/core/utils/app_init.dart';
-import 'package:flutter_tutorial/features/authentication/presentation/pages/login_page.dart';
 
 void main() {
-  AppInit.initGetIt();
   runApp(const MyApp());
 }
 
@@ -17,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),
+      // home: const LoginPage(),
     );
   }
 }

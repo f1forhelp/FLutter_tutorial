@@ -1,25 +1,13 @@
-import 'package:flutter/foundation.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dartz/dartz.dart';
 
-part 'usecase.freezed.dart';
+abstract class UseCaseWithParams<Type, Params> {
+  const UseCaseWithParams();
 
-@freezed
-class UseCase<Type, Params> with _$UseCase<Type, Params> {
-
-  Future<> call(Params params)
-
-  // const factory UseCase.idle() = Idle<T>;
-
-  // const factory UseCase.loading() = Loading<T>;
-
-  // const factory UseCase.loaded({T? data}) = Data<T>;
-
-  // const factory UseCase.error({required NetworkExceptions error}) = Error<T>;
+  Either<Failure, Type> call(Params params);
 }
 
-@freezed
-class NoParams with _$NoParams {}
+abstract class UseCaseWithoutParams<Type> {
+  const UseCaseWithoutParams();
 
-class EitherFailueOrType with _$EitherFailueOrType{
-  
+  Either<Failure, Type> call();
 }

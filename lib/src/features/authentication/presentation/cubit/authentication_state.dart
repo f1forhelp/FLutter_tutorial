@@ -1,6 +1,6 @@
 part of 'authentication_cubit.dart';
 
-abstract class AuthenticationState {
+abstract class AuthenticationState extends Equatable {
   const AuthenticationState();
 
   @override
