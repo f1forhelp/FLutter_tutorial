@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/main.dart';
 
-class InheritedWidgetExample extends StatefulWidget {
-  const InheritedWidgetExample({Key? key}) : super(key: key);
+class InheritedWidgetSimple extends StatefulWidget {
+  const InheritedWidgetSimple({Key? key}) : super(key: key);
 
   @override
-  State<InheritedWidgetExample> createState() => _InheritedWidgetExampleState();
+  State<InheritedWidgetSimple> createState() => _InheritedWidgetSimpleState();
 }
 
-class _InheritedWidgetExampleState extends State<InheritedWidgetExample> {
+class _InheritedWidgetSimpleState extends State<InheritedWidgetSimple> {
   int counter = 0;
 
   @override
@@ -21,6 +21,7 @@ class _InheritedWidgetExampleState extends State<InheritedWidgetExample> {
         ),
         body: Column(
           children: [
+            const TWidget(),
             CustomTextButton(
               onTap: () {
                 counter++;
@@ -36,26 +37,50 @@ class _InheritedWidgetExampleState extends State<InheritedWidgetExample> {
   }
 }
 
-class ScreenSecond extends StatefulWidget {
-  const ScreenSecond({Key? key}) : super(key: key);
+class TWidget extends StatefulWidget {
+  const TWidget({Key? key}) : super(key: key);
 
   @override
-  State<ScreenSecond> createState() => _ScreenSecondState();
+  State<TWidget> createState() => _TWidgetState();
 }
 
-class _ScreenSecondState extends State<ScreenSecond> {
+class _TWidgetState extends State<TWidget> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    print("didChangeDependencies - TWdiget");
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [],
+    return Container(
+      width: 100,
+      height: 100,
+      decoration: BoxDecoration(
+        color: Colors.red,
       ),
     );
   }
 }
 
-class _TempContainr extends StatelessWidget {
+class _TempContainr extends StatefulWidget {
   const _TempContainr({Key? key}) : super(key: key);
+
+  @override
+  State<_TempContainr> createState() => _TempContainrState();
+}
+
+class _TempContainrState extends State<_TempContainr> {
+  @override
+  void didChangeDependencies() {
+    print("didChangeDependencies - _TempContainr");
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +109,7 @@ class SateteInheritedWidget extends InheritedWidget {
 
   @override
   bool updateShouldNotify(covariant SateteInheritedWidget oldWidget) {
-    return oldWidget.counter != counter;
+    // return oldWidget.counter != counter;
+    return true;
   }
 }
