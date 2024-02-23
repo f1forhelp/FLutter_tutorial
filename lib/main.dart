@@ -1,5 +1,3 @@
-import 'dart:isolate';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,10 +6,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  Future name(params) {
-    Isolate.run(() {});
-  }
 
   @override
   Widget build(BuildContext context) {

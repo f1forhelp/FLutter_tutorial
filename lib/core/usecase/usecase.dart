@@ -1,13 +1,14 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_tutorial/core/constants/typedef.dart';
 
-// abstract class UseCaseWithParams<Type, Params> {
-//   const UseCaseWithParams();
+abstract class UseCaseWithParams<Type, Params> {
+  const UseCaseWithParams();
 
-//   Either<Failure, Type> call(Params params);
-// }
+  ResultFuture<Type> call(Params params);
+}
 
-// abstract class UseCaseWithoutParams<Type> {
-//   const UseCaseWithoutParams();
+abstract class UseCaseWithoutParmas<Type> {
+  const UseCaseWithoutParmas();
 
-//   Either<Failure, Type> call();
-// }
+  ResultFuture<Type> call();
+}
