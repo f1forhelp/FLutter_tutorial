@@ -18,7 +18,7 @@ class CacheException extends BaseException {
       : super(statusCode: 0, message: exception.toString());
 }
 
-class ServerException extends BaseException {
-  const ServerException({required int statusCode, required String message})
+class ApiException extends BaseException {
+  const ApiException({required int statusCode, required String message})
       : super(statusCode: statusCode, message: message);
 }

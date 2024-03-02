@@ -21,4 +21,6 @@ class CacheFailure extends Failure {
 class ServerFailure extends Failure {
   const ServerFailure({required int statusCode, required String message})
       : super(statusCode: statusCode, message: message);
+  ServerFailure.fromException({required Exception exception})
+      : super(statusCode: 1, message: exception.toString());
 }

@@ -3,16 +3,15 @@ import 'package:equatable/equatable.dart';
 
 import 'package:flutter_tutorial/core/constants/typedef.dart';
 import 'package:flutter_tutorial/core/usecase/usecase.dart';
-import 'package:flutter_tutorial/features/authentication/domain/entities/user_entity.dart';
-import 'package:flutter_tutorial/features/authentication/domain/repositories/authnetication_repo.i.dart';
+import 'package:flutter_tutorial/features/authentication/domain/repositories/auth_repo.i.dart';
 
 class AddUser extends UseCaseWithParams<void, AddUserParams> {
-  AddUser(this._authenticationRepoI);
+  const AddUser(this._authenticationRepoI);
 
-  AuthenticationRepoI _authenticationRepoI;
+  final AuthRepoI _authenticationRepoI;
 
   @override
-  ResultFuture<List<UserEntity>> call(params) {
+  ResultFuture<void> call(params) {
     return _authenticationRepoI.addUser(name: params.name, age: params.age);
   }
 }
