@@ -1,4 +1,4 @@
-import 'package:flutter_tutorial/features/authentication/data/models/user/user_model.dart';
+import 'package:flutter_tutorial/features/authentication/data/models/user/user_dto.dart';
 import "package:retrofit/retrofit.dart";
 import 'package:dio/dio.dart';
 part "auth_remote_source.g.dart";
@@ -9,8 +9,9 @@ abstract class AuthRemoteSource {
   static const String _featureUrl = "/auth";
 
   @POST(_featureUrl + "/login")
-  Future<UserModel> login({@Field() String username, @Field() String password});
+  Future<UserDto> login(
+      {@Field() required String username, @Field() required String password});
 
   @GET(_featureUrl + "/auth/me")
-  Future<UserModel> getCurrentUser();
+  Future<UserDto> getCurrentUser();
 }
