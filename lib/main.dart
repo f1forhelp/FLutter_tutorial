@@ -1,7 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/core/service/di/app_di.dart';
+import 'package:flutter_tutorial/core/unions/api_result/api_result.dart';
+import 'package:flutter_tutorial/features/authentication/data/models/user/user_model.dart';
+import 'package:flutter_tutorial/features/authentication/data/repositories/auth_repo.i.dart';
+import 'package:flutter_tutorial/features/authentication/domain/entity/user/user.dart';
+import 'package:flutter_tutorial/features/authentication/domain/repositories/auth_repo.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  AppDi().init();
+  UserModel user = const UserModel(userName: "Apple");
+  User user3 = User();
+  UserModel user1 = UserModel.empty();
+  UserModel user2 = UserModel.empty();
+
+  AuthRepo authRepo = AuthRepoI(authRemoteSource: authRemoteSource);
+
+  var res = await authRepo.getCurrentUser();
+  res.when(
+    sucess: (v) {},
+    failure: (callException) {
+      callException.message;
+    },
+  );
+
+  User.fromJson({"userName": null});
+
+  // print(user2 == user1);
+  // print(user3.id);
+  // // print(ApiResult.failure() == ApiResult.sucess(0));
+
+  // // User.entity(id: id);
+  // user.toJson();
+
+  // user.userName;
+
+  // print(user.toJson());
+
+  // print(UserModel.fromJson({"name": null}));
+
+  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

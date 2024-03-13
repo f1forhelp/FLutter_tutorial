@@ -1,0 +1,8 @@
+{
+    "name":"",
+    "age":2,
+    "address":{
+        "pinCode":2,
+        "city":"delhi"
+    }
+}
