@@ -26,17 +26,45 @@ void main() {
     dio.httpClientAdapter = dioAdapterMock;
     authRemoteSource = AuthRemoteSource(dio);
     registerFallbackValue(RequestOptions());
-    // registerFallbackValue(RequestOptions());
   });
   //
+
   test("Testing", () async {
     when(() => dioAdapterMock.fetch(any(), any(), any())).thenAnswer(
         (invocation) async => Future.value(ResponseBody.fromString(
             json.encode(UserDto.empty().toJson()), 200,
             headers: dioHttpHeadersForResponseBody)));
 
-    var res = await authRemoteSource.getCurrentUser();
+    // expect(authRemoteSource.getCurrentUser(), completes);
+    // expect(await authRemoteSource.getCurrentUser(), UserDto.empty());
+    // expect(await authRemoteSource.getCurrentUser(),
+    //     throwsException); // expect(actual, matcher)
 
-    print(res);
+    // expect(() => name(), throwsException);
+    // expect(
+    //     () async => await authRemoteSource.getCurrentUser(), throwsException);
+
+    // expectAsync0(() async {
+    //   try {
+    //     await authRemoteSource.getCurrentUser();
+    //   } catch (e) {
+    //     expect(e, isA<DioException>());
+    //   }
+    // });
+    // TypeMatcher<DioException>();
+
+    // expect(() async => await authRemoteSource.getCurrentUser(),
+    //     const TypeMatcher<DioException>());
+
+    // expect(() async => await authRemoteSource.getCurrentUser(),
+    //     throwsA(isA<DioException>()));
+
+    // expect(actual, matcher);
+
+    // expect(actual, matcher);
   });
+}
+
+name() {
+  throw Exception();
 }
