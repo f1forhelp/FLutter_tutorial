@@ -5,7 +5,7 @@ part "auth_remote_source.g.dart";
 
 @RestApi(parser: Parser.JsonSerializable)
 abstract class AuthRemoteSource {
-  factory AuthRemoteSource(Dio dio) = _AuthRemoteSource;
+  factory AuthRemoteSource(Dio dio, {String baseUrl}) = _AuthRemoteSource;
   static const String _featureUrl = "/auth";
 
   @POST(_featureUrl + "/login")

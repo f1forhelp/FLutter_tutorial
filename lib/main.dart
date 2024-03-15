@@ -1,6 +1,9 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/core/service/di/app_di.dart';
 import 'package:flutter_tutorial/core/unions/api_result/api_result.dart';
+import 'package:flutter_tutorial/core/utils/constants/export.dart';
+import 'package:flutter_tutorial/features/authentication/data/datasources/auth_remote_source.dart';
 import 'package:flutter_tutorial/features/authentication/data/models/user/user_dto.dart';
 import 'package:flutter_tutorial/features/authentication/data/repositories/auth_repo.i.dart';
 import 'package:flutter_tutorial/features/authentication/domain/entity/user/user.dart';
@@ -22,7 +25,7 @@ void main() async {
 
   // print(UserModel.fromJson({"name": null}));
 
-  // runApp(const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -70,6 +73,22 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+
+  sampleApi() async {
+    AuthRemoteSource authRemoteSource =
+        AuthRemoteSource(Dio(BaseOptions(baseUrl: KApi.baseUrl, headers: {
+      "Authorization":
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvYXV0cXVpYXV0LnBuZz9zaXplPTUweDUwJnNldD1zZXQxIiwiaWF0IjoxNjM1NzczOTYyLCJleHAiOjE2MzU3Nzc1NjJ9.n9PQX8w8ocKo0dMCw3g8bKhjB8Wo7f7IONFBDqfxKhs"
+    })));
+    var res = await authRemoteSource.getCurrentUser();
+    print(res);
+  }
+
+  @override
+  void initState() {
+    sampleApi();
+    super.initState();
+  }
 
   void _incrementCounter() {
     setState(() {
