@@ -31,7 +31,7 @@ class NetworkUtil {
         if (e.type == DioExceptionType.badResponse) {
           return ApiResult.failure(CallException.api(
               statusCode: e.response?.statusCode ?? 0,
-              message: e.message ?? ""));
+              message: e.response?.data?["message"] ?? e.message));
         } else {
           return ApiResult.failure(CallException.api(
               statusCode: e.response?.statusCode ?? 0,

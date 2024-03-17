@@ -6,25 +6,13 @@ import 'package:flutter_tutorial/core/utils/constants/export.dart';
 import 'package:flutter_tutorial/features/authentication/data/datasources/auth_remote_source.dart';
 import 'package:flutter_tutorial/features/authentication/data/models/user/user_dto.dart';
 import 'package:flutter_tutorial/features/authentication/data/repositories/auth_repo.i.dart';
-import 'package:flutter_tutorial/features/authentication/domain/entity/user/user.dart';
+import 'package:flutter_tutorial/features/authentication/domain/entities/user/user.dart';
 import 'package:flutter_tutorial/features/authentication/domain/repositories/auth_repo.dart';
+import 'package:flutter_tutorial/features/authentication/presentation/cubit/authentication_cubit.dart';
+import 'package:flutter_tutorial/features/authentication/presentation/pages/login_page.dart';
 
 void main() async {
   AppDi().init();
-
-  // print(user2 == user1);
-  // print(user3.id);
-  // // print(ApiResult.failure() == ApiResult.sucess(0));
-
-  // // User.entity(id: id);
-  // user.toJson();
-
-  // user.userName;
-
-  // print(user.toJson());
-
-  // print(UserModel.fromJson({"name": null}));
-
   runApp(const MyApp());
 }
 
@@ -48,7 +36,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LoginPage(
+        authenticationCubit: AppDi().di<AuthenticationCubit>(),
+      ),
     );
   }
 }

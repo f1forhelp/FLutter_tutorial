@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_tutorial/features/authentication/domain/entity/user/user.dart';
+import 'package:flutter_tutorial/features/authentication/domain/entities/user/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user_dto.g.dart';
 

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_tutorial/features/authentication/data/datasources/auth_remote_source.dart';
 import 'package:flutter_tutorial/features/authentication/data/models/user/user_dto.dart';
-import 'package:flutter_tutorial/features/authentication/domain/entity/user/user.dart';
+import 'package:flutter_tutorial/features/authentication/domain/entities/user/user.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:dio/dio.dart';
