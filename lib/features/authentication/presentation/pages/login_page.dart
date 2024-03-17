@@ -6,6 +6,7 @@ import 'package:flutter_tutorial/features/authentication/presentation/cubit/auth
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tutorial/features/authentication/presentation/widgets/custom_text_button.dart';
 import 'package:flutter_tutorial/features/authentication/presentation/widgets/custom_text_field.dart';
+import 'package:flutter_tutorial/features/dashboard/presentation/pages/dashboard_page.dart';
 
 class LoginPage extends StatefulWidget {
   final AuthenticationCubit authenticationCubit;
@@ -43,6 +44,11 @@ class _LoginPageState extends State<LoginPage> {
             }
             if (loginState is UiStateSuccess) {
               //Navigate to next screen
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DasboardPage(),
+                  ));
             }
           },
           child: SingleChildScrollView(
