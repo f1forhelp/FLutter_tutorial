@@ -15,9 +15,12 @@ void main() {
   late LoginUsecase loginUsecase;
 
   setUpAll(() {
+    registerFallbackValue(const LoginParams(username: "", password: ""));
+  });
+
+  setUp(() {
     loginUsecase = MockLoginUseCase();
     authenticationCubit = AuthenticationCubit(loginUsecase: loginUsecase);
-    registerFallbackValue(const LoginParams(username: "", password: ""));
   });
 
   tearDown(() {
@@ -56,6 +59,21 @@ void main() {
       verify(() => loginUsecase(any())).called(1);
     });
 
+    blocTest<AuthenticationCubit, AuthenticationState>(
+      'emits [MyState] when MyEvent is added.',
+      build: () {
+        when(() => loginUsecase(any())).thenAnswer((invocation) async =>
+            Future.value(ApiResult.sucess(User(id: 0, userName: ""))));
+        return authenticationCubit;
+      },
+      act: (bloc) => bloc.login(
+          loginParams: const LoginParams(username: "", password: "")),
+      expect: () => [
+        AuthenticationState(loginState: UiState.laoding()),
+        AuthenticationState(
+            loginState: UiState.success(User(id: 0, userName: ""))),
+      ],
+    );
     blocTest<AuthenticationCubit, AuthenticationState>(
       'emits [MyState] when MyEvent is added.',
       build: () {
