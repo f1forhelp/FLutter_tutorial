@@ -6,17 +6,26 @@ import 'package:flutter_tutorial/features/authentication/domain/entities/user/us
 import 'package:mocktail/mocktail.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:dio/dio.dart';
-// import 'package:http_mock_adapter/http_mock_adapter.dart';
-
-// class DioAdapterMock extends Mock implements HttpClientAdapter {}
 
 class DioAdapterMock extends Mock implements HttpClientAdapter {}
 
-const dioHttpHeadersForResponseBody = {
-  Headers.contentTypeHeader: [Headers.jsonContentType],
-};
+extension DioAdapterMockEx on DioAdapterMock {
+  buildMockFetch(
+      {required Map<String, dynamic> response, int statusCode = 200}) {
+    when(
+      () => fetch(any(), any(), any()),
+    ).thenAnswer((invocation) async => await Future.value(
+            ResponseBody.fromString(jsonEncode(response), statusCode, headers: {
+          Headers.contentTypeHeader: [Headers.jsonContentType]
+        })));
+  }
+
+  Future<ResponseBody> getVerifyCall() {
+    return fetch(any(), any(), any());
+  }
+}
+
 void main() {
-  // final dioMock = DioMock();
   final Dio dio = Dio();
   late DioAdapterMock dioAdapterMock;
 
@@ -27,44 +36,50 @@ void main() {
     authRemoteSource = AuthRemoteSource(dio);
     registerFallbackValue(RequestOptions());
   });
-  //
 
-  test("Testing", () async {
-    when(() => dioAdapterMock.fetch(any(), any(), any())).thenAnswer(
-        (invocation) async => Future.value(ResponseBody.fromString(
-            json.encode(UserDto.empty().toJson()), 200,
-            headers: dioHttpHeadersForResponseBody)));
+  //Resetting state so that there want be error regarding no of calls.
+  setUp(() => resetMocktailState());
+  setUp(() => reset(dioAdapterMock));
+  group("SUT-getCurrentUser", () {
+    test("should complete successfully when no error is thrown ✅", () async {
+      dioAdapterMock.buildMockFetch(
+          response: UserDto.empty().toJson(), statusCode: 200);
+      expect(authRemoteSource.getCurrentUser(), completes);
+      expect(await authRemoteSource.getCurrentUser(), UserDto.empty());
+      verify(() => dioAdapterMock.getVerifyCall()).called(2);
+      verifyNoMoreInteractions(dioAdapterMock);
+    });
+    test("should complete with DioException", () async {
+      dioAdapterMock.buildMockFetch(
+          response: UserDto.empty().toJson(), statusCode: 400);
+      //Cant check below condition as is it will throw error.
+      // expect(authRemoteSource.getCurrentUser(), completes);
 
-    // expect(authRemoteSource.getCurrentUser(), completes);
-    // expect(await authRemoteSource.getCurrentUser(), UserDto.empty());
-    // expect(await authRemoteSource.getCurrentUser(),
-    //     throwsException); // expect(actual, matcher)
-
-    // expect(() => name(), throwsException);
-    // expect(
-    //     () async => await authRemoteSource.getCurrentUser(), throwsException);
-
-    // expectAsync0(() async {
-    //   try {
-    //     await authRemoteSource.getCurrentUser();
-    //   } catch (e) {
-    //     expect(e, isA<DioException>());
-    //   }
-    // });
-    // TypeMatcher<DioException>();
-
-    // expect(() async => await authRemoteSource.getCurrentUser(),
-    //     const TypeMatcher<DioException>());
-
-    // expect(() async => await authRemoteSource.getCurrentUser(),
-    //     throwsA(isA<DioException>()));
-
-    // expect(actual, matcher);
-
-    // expect(actual, matcher);
+      expect(authRemoteSource.getCurrentUser(), throwsA(isA<DioException>()));
+      verifyNever(dioAdapterMock.getVerifyCall);
+      verifyNoMoreInteractions(dioAdapterMock);
+    });
   });
-}
 
-name() {
-  throw Exception();
+  group("SUT-login", () {
+    test("Should complete sucessfully", () async {
+      dioAdapterMock.buildMockFetch(
+          response: UserDto.empty().toJson(), statusCode: 200);
+      expect(authRemoteSource.login(password: "", username: ""), completes);
+      expect(await authRemoteSource.login(password: "", username: ""),
+          UserDto.empty());
+      verify(() => dioAdapterMock.getVerifyCall()).called(2);
+      verifyNoMoreInteractions(dioAdapterMock);
+    });
+    test("Should complete with error", () async {
+      dioAdapterMock.buildMockFetch(
+          response: UserDto.empty().toJson(), statusCode: 400);
+      //Cant check below condition as is it will throw error.
+      // expect(authRemoteSource.login(password: "", username: ""), completes);
+      expect(authRemoteSource.login(password: "", username: ""),
+          throwsA(isA<DioException>()));
+      verifyNever(dioAdapterMock.getVerifyCall);
+      verifyNoMoreInteractions(dioAdapterMock);
+    });
+  });
 }
