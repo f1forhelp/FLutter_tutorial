@@ -82,8 +82,8 @@ class _LoginPageState extends State<LoginPage> {
                         label: state.loginState is UiStateFailure
                             ? "Retry"
                             : "Login",
-                        onTap: () {
-                          context.read<AuthenticationCubit>().login(
+                        onTap: () async {
+                          await context.read<AuthenticationCubit>().login(
                                 loginParams: LoginParams(
                                   username: emailController.text,
                                   password: passwordController.text,
