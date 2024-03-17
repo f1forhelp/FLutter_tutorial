@@ -1,12 +1,13 @@
 import 'dart:ui';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_tutorial/core/service/di/app_di.dart';
 import 'package:flutter_tutorial/core/unions/api_result/api_result.dart';
 import 'package:flutter_tutorial/features/authentication/domain/entities/user/user.dart';
 import 'package:flutter_tutorial/features/authentication/domain/usecases/login_usecase.dart';
 import 'package:flutter_tutorial/features/authentication/presentation/cubit/authentication_cubit.dart';
+import 'package:integration_test/integration_test.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_tutorial/core/service/di/app_di.dart';
 import 'package:flutter_tutorial/features/authentication/presentation/pages/login_page.dart';
 import 'package:flutter_tutorial/features/authentication/presentation/widgets/custom_text_button.dart';
 import 'package:flutter_tutorial/features/authentication/presentation/widgets/custom_text_field.dart';
@@ -16,13 +17,13 @@ import 'package:mocktail/mocktail.dart';
 class MockLoginUsecase extends Mock implements LoginUsecase {}
 
 void main() {
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized(); // NEW
   late LoginUsecase loginUsecase;
-
   setUp(() {
     loginUsecase = MockLoginUsecase();
-    AppDi().init();
     registerFallbackValue(
         const LoginParams(username: "kminchelle", password: "0lelplR"));
+    AppDi().init();
   });
 
   group("", () {

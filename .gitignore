@@ -49,3 +49,7 @@ pubspec.lock
 coverage/lcov.info
 .metadata
 .metadata
+ios/Podfile
+ios/Flutter/Debug.xcconfig
+ios/Flutter/Debug.xcconfig
+ios/Flutter/Release.xcconfig
