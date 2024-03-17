@@ -88,6 +88,11 @@ void main() {
         AuthenticationState(
             loginState: UiState.success(User(id: 0, userName: ""))),
       ],
+      verify: (bloc) {
+        verify(
+          () => loginUsecase(any()),
+        ).called(1);
+      },
     );
   });
 }
