@@ -41,6 +41,9 @@ class _LoginPageState extends State<LoginPage> {
               ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text(loginState.callException.message)));
             }
+            if (loginState is UiStateSuccess) {
+              //Navigate to next screen
+            }
           },
           child: SingleChildScrollView(
             child: Padding(

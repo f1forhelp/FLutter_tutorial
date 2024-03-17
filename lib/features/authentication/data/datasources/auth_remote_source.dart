@@ -9,8 +9,10 @@ abstract class AuthRemoteSource {
   static const String _featureUrl = "/auth";
 
   @POST(_featureUrl + "/login")
-  Future<UserDto> login(
-      {@Field() required String username, @Field() required String password});
+  Future<UserDto> login({
+    @Field() required String username,
+    @Field() required String password,
+  });
 
   @GET(_featureUrl + "/auth/me")
   Future<UserDto> getCurrentUser();

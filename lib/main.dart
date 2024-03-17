@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: LoginPage(
-        authenticationCubit: AppDi().di<AuthenticationCubit>(),
+        authenticationCubit: AppDi().di(),
       ),
     );
   }

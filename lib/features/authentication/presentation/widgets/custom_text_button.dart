@@ -22,7 +22,10 @@ class _CustomTextButtonState extends State<CustomTextButton> {
       onPressed: widget.onTap,
       child: widget.isLoading
           ? const SizedBox(
-              width: 20, height: 20, child: CircularProgressIndicator())
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(),
+            )
           : Text(widget.label),
     );
   }

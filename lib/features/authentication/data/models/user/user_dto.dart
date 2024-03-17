@@ -10,6 +10,7 @@ part 'user_dto.g.dart';
 @JsonSerializable()
 class UserDto with EquatableMixin {
   int id;
+  @JsonKey(name: "username")
   String userName;
   String? image;
   String? token;
