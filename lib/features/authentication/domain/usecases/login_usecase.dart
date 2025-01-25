@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_tutorial/core/unions/api_result/api_result.dart';
 import 'package:flutter_tutorial/core/usecase/usecase.dart';
 import 'package:flutter_tutorial/features/authentication/domain/entities/user/user.dart';
