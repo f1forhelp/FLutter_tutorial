@@ -4,4 +4,6 @@ environment:
   sdk: ^3.5.4
 
 dependencies:
+  yaml:
+  package_config:
   mason: ^0.1.0

@@ -1,0 +1,1 @@
+part '{{featureName}}.dart';

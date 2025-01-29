@@ -15,6 +15,9 @@ version: 0.1.0+1
 environment:
   mason: ^0.1.0
 
+
+
+
 # Variables specify dynamic values that your brick depends on.
 # Zero or more variables can be specified for a given brick.
 # Each variable has:
@@ -26,8 +29,8 @@ environment:
 #  * a list of values (enums only)
 #  * an optional separator (list only)
 vars:
-  name:
+  codegenOption:
     type: string
-    description: Your name
-    default: Dash
-    prompt: What is your name?
+    description: Option for codegen
+    default: ""
+    prompt: Select 1 for feature,2 for utility.
