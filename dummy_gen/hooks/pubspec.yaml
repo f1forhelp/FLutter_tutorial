@@ -1,4 +1,4 @@
-name: utkarsh_interview_hooks
+name: dummy_gen_hooks
 
 environment:
   sdk: ^3.5.4

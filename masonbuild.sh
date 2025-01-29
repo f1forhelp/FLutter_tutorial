@@ -1,2 +1,2 @@
-mason add utkarsh_interview --path utkarsh_interview
-mason make utkarsh_interview
+mason add dummy_gen --path dummy_gen
+mason make dummy_gen
