@@ -1,7 +1,7 @@
 name: dummy_gen_hooks
 
 environment:
-  sdk: ^3.5.4
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   yaml:
