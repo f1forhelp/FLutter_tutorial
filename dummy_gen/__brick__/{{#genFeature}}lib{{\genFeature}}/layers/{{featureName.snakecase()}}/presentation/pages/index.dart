@@ -1,1 +1,1 @@
-part '{{featureName.snakecase()}}.dart';
+part '{{featureName.snakeCase()}}.dart';
